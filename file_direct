@@ -14,9 +14,12 @@ pipeline
 		
 		stage ('validate code')
 		 {
-			steps{
-			withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven') {
-    			sh 'mvn validate'
+			steps
+			{
+				withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven')
+				{
+    				sh 'mvn validate'
+				}
 		 }
 		 
 		 stage ('compile code')
