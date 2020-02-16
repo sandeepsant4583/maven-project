@@ -11,5 +11,15 @@ pipeline
 			git branch: 'master', url: 'https://github.com/sandeepsant4583/maven-project'
 			}
 		}
+		
+		stage ('validate code')
+		{
+			steps{
+			withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven') {
+    			sh 'mvn validate'
+		}	
+				}
+		
+		}
 	}
 }
