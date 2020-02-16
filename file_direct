@@ -1,0 +1,15 @@
+pipeline
+{
+	agent any
+	stages
+	{
+		stage ('scam checkout')
+		
+		{
+			steps
+			{
+			branch 'master', 'git 'https://github.com/sandeepsant4583/maven-project''
+			}
+		}
+	}
+}
