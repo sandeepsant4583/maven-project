@@ -19,6 +19,7 @@ pipeline
 				withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven')
 				{
     				sh 'mvn validate'
+				}
 			}
 		 }
 		 
@@ -29,10 +30,10 @@ pipeline
 				withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven') 
 				{
     				sh 'mvn compile'
-				
+				}
 			
+		   	}
 		   }
-		}
 		
 		}
 	}
