@@ -34,6 +34,17 @@ pipeline
 			
 		   	}
 		   }
+		   
+		   stage ('compile text')
+		   {
+		   	steps 
+			{
+			withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven') 
+				{
+    				sh 'mvn test'
+				}
+			}
+		   }
 		
 		}
 	}
