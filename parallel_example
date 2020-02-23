@@ -11,7 +11,8 @@ pipeline
 			git branch: 'master', url: 'https://github.com/sandeepsant4583/maven-project'
 			}
 		}
-		
+	stage ('parallel requirement')
+	{
   Parallel
   {
 		stage ('validate code')
@@ -50,5 +51,6 @@ pipeline
 		
 		}
 	}
+}
 }
 
