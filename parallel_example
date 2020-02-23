@@ -1,0 +1,54 @@
+pipeline
+{
+	agent any
+	stages
+	{
+		stage ('scam checkout')
+		
+		{
+			steps
+			{
+			git branch: 'master', url: 'https://github.com/sandeepsant4583/maven-project'
+			}
+		}
+		
+  Parallel
+  {
+		stage ('validate code')
+		 {
+			steps
+			{
+				withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven')
+				{
+    				sh 'mvn validate'
+				}
+			}
+		 }
+		 
+		 stage ('compile code')
+		   {
+		 	steps 
+			{
+				withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven') 
+				{
+    				sh 'mvn compile'
+				}
+			
+		   	}
+		   }
+		   
+		   stage ('test code')
+		   {
+		   	steps 
+			{
+			withMaven(jdk: 'local_JDK_1.8', maven: 'Local_maven') 
+				{
+    				sh 'mvn test'
+				}
+			}
+		   }
+		
+		}
+	}
+}
+
