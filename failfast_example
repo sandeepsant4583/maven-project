@@ -1,0 +1,30 @@
+pipeline
+{
+	agent any
+	stages
+	{
+		stage ('scam checkout')
+		
+		{
+			steps
+			{
+			git branch: 'master', url: 'https://github.com/sandeepsant4583/maven-project'
+			}
+		}
+    
+    parallel createpackage:
+    {
+      stage('maven package goal')
+        {
+          sh 'mvn package'
+        }
+		}, installm2repo:
+    {
+        stage ('maven install goal')
+        {
+          sh 'mvn insall'
+        }
+     },
+     failFast:true
+     
+		
